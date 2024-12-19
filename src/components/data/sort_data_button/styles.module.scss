@@ -1,0 +1,15 @@
+.button {
+  background: var(--navbar-background);
+  color: var(--navbar-text);
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 5rem;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

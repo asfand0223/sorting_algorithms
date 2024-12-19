@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.data {
+  font-size: 2rem;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.data > span {
+  display: inline-block;
+  text-align: center;
+  margin: 0 1rem;
+}
