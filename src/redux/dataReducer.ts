@@ -3,14 +3,16 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IInitialState {
   data: number[];
-  sortSteps: number[][];
   sorted: boolean;
+  sortSteps: number[][];
+  currentStep: number;
 }
 
 const initialState: IInitialState = {
   data: [],
-  sortSteps: [],
   sorted: false,
+  sortSteps: [],
+  currentStep: 0,
 };
 
 interface ISetDataPayload {
@@ -19,6 +21,10 @@ interface ISetDataPayload {
 
 interface IAddDataPayload {
   data: number;
+}
+
+interface ISetCurrentStepPayload {
+  currentStep: number;
 }
 
 const sort = (data: number[], l: number, r: number, sortSteps: number[][]) => {
@@ -84,8 +90,14 @@ export const dataSlice = createSlice({
       sort(state.data, 0, state.data.length - 1, state.sortSteps);
       state.sorted = true;
     },
+    setCurrentStep: (
+      state: IInitialState,
+      action: PayloadAction<ISetCurrentStepPayload>,
+    ) => {
+      state.currentStep = action.payload.currentStep;
+    },
   },
 });
 
-export const { setData, addData, sortData } = dataSlice.actions;
+export const { setData, addData, sortData, setCurrentStep } = dataSlice.actions;
 export const dataReducer = dataSlice.reducer;

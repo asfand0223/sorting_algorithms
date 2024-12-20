@@ -1,6 +1,6 @@
 :root {
-  --navbar-background: linear-gradient(45deg, purple, blue);
-  --navbar-text: #ffffff;
+  --purple-blue-gradient: linear-gradient(45deg, purple, blue);
+  --white-text: #ffffff;
 }
 
 * {

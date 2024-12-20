@@ -1,17 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import SortStep from "./sort_step";
+import { useDispatch } from "react-redux";
+import { setCurrentStep } from "@/redux/dataReducer";
 
 const SortSteps = () => {
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const { sortSteps } = useSelector((state: RootState) => state.data);
-
+  const { sortSteps, currentStep } = useSelector(
+    (state: RootState) => state.data,
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
     const iterateSteps = async () => {
       for (let i = 0; i < sortSteps.length; i++) {
-        setCurrentStep(i);
+        dispatch(setCurrentStep({ currentStep: i }));
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
     };

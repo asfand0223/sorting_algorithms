@@ -1,13 +1,15 @@
 .button {
-  background: var(--navbar-background);
-  color: var(--navbar-text);
+  background: var(--purple-blue-gradient);
+  color: var(--white-text);
   border: none;
   outline: none;
   border-radius: 1rem;
   padding: 0.5rem;
   width: 5rem;
   cursor: pointer;
-  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9rem;
 
   &:hover {
     transform: scale(1.05);

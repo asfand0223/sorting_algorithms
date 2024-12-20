@@ -11,7 +11,7 @@ const SortDataButton = () => {
   };
   return (
     <button className={styles.button} onClick={handleSortDataButtonClick}>
-      Sort
+      SORT
     </button>
   );
 };
