@@ -19,5 +19,7 @@
 .sortSteps > span {
   display: inline-block;
   text-align: center;
-  margin: 0 1rem;
+  width: 0.5rem;
+  background: var(--purple-blue-gradient);
+  border: none;
 }

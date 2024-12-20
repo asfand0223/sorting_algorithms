@@ -11,7 +11,7 @@ const Data = () => {
   const { data, sorted } = useSelector((state: RootState) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
-    for (let i = 10; i > 0; i--) {
+    for (let i = 100; i > 0; i--) {
       dispatch(addData({ data: i }));
     }
   }, []);
@@ -21,7 +21,7 @@ const Data = () => {
       {!sorted && (
         <div className={styles.data}>
           {data.map((d, index) => (
-            <span key={index}>{d} </span>
+            <span key={index} style={{ height: `${d}px` }}></span>
           ))}
         </div>
       )}

@@ -15,7 +15,7 @@ const SortSteps = () => {
     const iterateSteps = async () => {
       for (let i = 0; i < sortSteps.length; i++) {
         dispatch(setCurrentStep({ currentStep: i }));
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 50));
       }
     };
 
