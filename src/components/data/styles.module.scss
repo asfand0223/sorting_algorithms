@@ -4,17 +4,19 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
-.data {
+.data,
+.sortSteps {
   font-size: 2rem;
   padding: 1rem;
   width: 100%;
   text-align: center;
 }
 
-.data > span {
+.data > span,
+.sortSteps > span {
   display: inline-block;
   text-align: center;
   margin: 0 1rem;

@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
-        <h1 className={styles.title}> Sorting Algorithms</h1>
+        <h1 className={styles.title}>Sorting Algorithms</h1>
       </div>
     </div>
   );

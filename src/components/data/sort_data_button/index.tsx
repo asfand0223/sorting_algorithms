@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import styles from "./styles.module.scss";
 import { useDispatch } from "react-redux";
 import { sortData } from "@/redux/dataReducer";
+import styles from "./styles.module.scss";
 
 const SortDataButton = () => {
   const dispatch = useDispatch();

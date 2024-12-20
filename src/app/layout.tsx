@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClientLayout from "@/components/ClientLayout";
+import ClientLayout from "./client_layout";
 
 export const metadata: Metadata = {
   title: "Sorting Algorithms",

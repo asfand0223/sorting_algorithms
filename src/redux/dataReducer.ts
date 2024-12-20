@@ -3,10 +3,14 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IInitialState {
   data: number[];
+  sortSteps: number[][];
+  sorted: boolean;
 }
 
 const initialState: IInitialState = {
   data: [],
+  sortSteps: [],
+  sorted: false,
 };
 
 interface ISetDataPayload {
@@ -17,15 +21,21 @@ interface IAddDataPayload {
   data: number;
 }
 
-const sort = (data: number[], l: number, r: number) => {
+const sort = (data: number[], l: number, r: number, sortSteps: number[][]) => {
   if (l >= r) return;
   let m = Math.floor((l + r) / 2);
-  sort(data, l, m);
-  sort(data, m + 1, r);
-  merge(data, l, m, r);
+  sort(data, l, m, sortSteps);
+  sort(data, m + 1, r, sortSteps);
+  merge(data, l, m, r, sortSteps);
 };
 
-const merge = (data: number[], l: number, m: number, r: number) => {
+const merge = (
+  data: number[],
+  l: number,
+  m: number,
+  r: number,
+  sortSteps: number[][],
+) => {
   let ll = m - l + 1;
   let rl = r - m;
 
@@ -55,6 +65,7 @@ const merge = (data: number[], l: number, m: number, r: number) => {
   while (j < rl) {
     data[k++] = tr[j++];
   }
+  sortSteps.push([...data]);
 };
 
 export const dataSlice = createSlice({
@@ -68,7 +79,10 @@ export const dataSlice = createSlice({
       state.data = [...state.data, action.payload.data];
     },
     sortData: (state: IInitialState) => {
-      sort(state.data, 0, state.data.length - 1);
+      if (state.sorted) return;
+      state.sortSteps = [];
+      sort(state.data, 0, state.data.length - 1, state.sortSteps);
+      state.sorted = true;
     },
   },
 });
