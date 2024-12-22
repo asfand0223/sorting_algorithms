@@ -9,7 +9,10 @@ const SortStep: React.FC<ISortStepProps> = ({ step }) => {
     <>
       {step &&
         step.map((s, index) => (
-          <span key={index} style={{ height: `${s}px` }}></span>
+          <span
+            key={index}
+            style={{ height: `${s}%`, width: `${(1 / step.length) * 100}%` }}
+          ></span>
         ))}
     </>
   );

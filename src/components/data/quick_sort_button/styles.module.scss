@@ -1,0 +1,16 @@
+.button {
+  background: var(--purple-blue-gradient);
+  color: var(--white-text);
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

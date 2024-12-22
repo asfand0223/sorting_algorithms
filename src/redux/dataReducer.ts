@@ -27,11 +27,16 @@ interface ISetCurrentStepPayload {
   currentStep: number;
 }
 
-const sort = (data: number[], l: number, r: number, sortSteps: number[][]) => {
+const mergeSort = (
+  data: number[],
+  l: number,
+  r: number,
+  sortSteps: number[][],
+) => {
   if (l >= r) return;
   let m = Math.floor((l + r) / 2);
-  sort(data, l, m, sortSteps);
-  sort(data, m + 1, r, sortSteps);
+  mergeSort(data, l, m, sortSteps);
+  mergeSort(data, m + 1, r, sortSteps);
   merge(data, l, m, r, sortSteps);
 };
 
@@ -84,10 +89,22 @@ export const dataSlice = createSlice({
     addData: (state: IInitialState, action: PayloadAction<IAddDataPayload>) => {
       state.data = [...state.data, action.payload.data];
     },
-    sortData: (state: IInitialState) => {
+    mergeSortData: (state: IInitialState) => {
       if (state.sorted) return;
       state.sortSteps = [];
-      sort(state.data, 0, state.data.length - 1, state.sortSteps);
+      mergeSort(state.data, 0, state.data.length - 1, state.sortSteps);
+      state.sorted = true;
+    },
+    quickSortData: (state: IInitialState) => {
+      if (state.sorted) return;
+      state.sortSteps = [];
+      mergeSort(state.data, 0, state.data.length - 1, state.sortSteps);
+      state.sorted = true;
+    },
+    insertionSortData: (state: IInitialState) => {
+      if (state.sorted) return;
+      state.sortSteps = [];
+      mergeSort(state.data, 0, state.data.length - 1, state.sortSteps);
       state.sorted = true;
     },
     setCurrentStep: (
@@ -99,5 +116,12 @@ export const dataSlice = createSlice({
   },
 });
 
-export const { setData, addData, sortData, setCurrentStep } = dataSlice.actions;
+export const {
+  setData,
+  addData,
+  mergeSortData,
+  quickSortData,
+  insertionSortData,
+  setCurrentStep,
+} = dataSlice.actions;
 export const dataReducer = dataSlice.reducer;

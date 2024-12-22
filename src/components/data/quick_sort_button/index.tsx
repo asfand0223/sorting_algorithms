@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { sortData } from "@/redux/dataReducer";
+import { quickSortData } from "@/redux/dataReducer";
 import styles from "./styles.module.scss";
 
-const SortDataButton = () => {
+const QuickSortButton = () => {
   const dispatch = useDispatch();
   const handleSortDataButtonClick = () => {
-    dispatch(sortData());
+    dispatch(quickSortData());
   };
   return (
     <button className={styles.button} onClick={handleSortDataButtonClick}>
-      SORT
+      QUICK SORT
     </button>
   );
 };
 
-export default SortDataButton;
+export default QuickSortButton;
