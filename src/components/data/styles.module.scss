@@ -12,6 +12,10 @@
   height: 50%;
 }
 
+.sortAndResetDataButtonsContainer {
+  margin-top: 0.5rem;
+}
+
 .data,
 .sortSteps {
   font-size: 2rem;
@@ -33,12 +37,4 @@
   text-align: center;
   border: none;
   background: linear-gradient(45deg, purple, blue);
-}
-
-.buttons {
-  display: flex;
-}
-
-.buttons > button {
-  margin-left: 0.5rem;
 }

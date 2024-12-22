@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { dataReducer } from "./dataReducer";
+import { sortDataReducer } from "./sortDataReducer";
 
 export const store = configureStore({
-  reducer: { data: dataReducer },
+  reducer: { sortData: sortDataReducer },
   devTools: process.env.NODE_ENV !== "production",
 });
 

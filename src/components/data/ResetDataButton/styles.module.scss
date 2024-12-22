@@ -1,10 +1,11 @@
 .button {
-  background: var(--purple-blue-gradient);
-  color: var(--white-text);
+  background-color: orange;
+  color: #ffffff;
   border: none;
   outline: none;
   border-radius: 1rem;
   padding: 0.5rem;
+  margin-right: 0.5rem;
   cursor: pointer;
   text-align: center;
   font-weight: bold;
@@ -13,4 +14,8 @@
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.disabled {
+  background-color: grey;
 }

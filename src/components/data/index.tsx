@@ -2,43 +2,47 @@
 import React, { useEffect } from "react";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { addData } from "@/redux/dataReducer";
-import SortSteps from "./sort_steps";
-import MergeSortButton from "./merge_sort_button";
+import SortSteps from "./sortedData";
+import { addSortingData } from "@/redux/sortDataReducer";
+import SortMenu from "./SortMenu";
+import SortButton from "./SortButton";
 import styles from "./styles.module.scss";
-import QuickSortButton from "./quick_sort_button";
-import InsertionSortButton from "./insertion_sort_button";
+import ResetDataButton from "./ResetDataButton";
 
 const Data = () => {
-  const { data, sorted } = useSelector((state: RootState) => state.data);
+  const { sortingData, isSorted } = useSelector(
+    (state: RootState) => state.sortData,
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     for (let i = 100; i > 0; i--) {
-      dispatch(addData({ data: Math.floor(Math.random() * 100) + 1 }));
+      dispatch(addSortingData({ data: Math.floor(Math.random() * 100) + 1 }));
     }
   }, []);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.buttons}>
-          <MergeSortButton />
-          <QuickSortButton />
-          <InsertionSortButton />
+        <div className={styles.sortMenuContainer}>
+          <SortMenu />
         </div>
-        {!sorted && (
+        <div className={styles.sortAndResetDataButtonsContainer}>
+          <SortButton />
+          <ResetDataButton />
+        </div>
+        {!isSorted && (
           <div className={styles.data}>
-            {data.map((d, index) => (
+            {sortingData.map((d, index) => (
               <span
                 key={index}
                 style={{
                   height: `${d}%`,
-                  width: `${(1 / data.length) * 100}%`,
+                  width: `${(1 / sortingData.length) * 100}%`,
                 }}
               ></span>
             ))}
           </div>
         )}
-        {sorted && (
+        {isSorted && (
           <div className={styles.sortSteps}>
             <SortSteps />
           </div>
