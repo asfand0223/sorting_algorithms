@@ -2,12 +2,12 @@
 import React, { useEffect } from "react";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import SortSteps from "./sortedData";
+import SortSteps from "./SortedData";
 import { addSortingData } from "@/redux/sortDataReducer";
 import SortMenu from "./SortMenu";
 import SortButton from "./SortButton";
-import styles from "./styles.module.scss";
 import ResetDataButton from "./ResetDataButton";
+import styles from "./styles.module.scss";
 
 const Data = () => {
   const { sortingData, isSorted } = useSelector(

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ReduxProvider from "@/providers/ReduxProvider";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 
 const ClientLayout = ({
   children,
