@@ -7,16 +7,16 @@ import styles from "./styles.module.scss";
 
 const ResetDataButton = () => {
   const dispatch = useDispatch();
-  const { isVisualised } = useSelector((state: RootState) => state.sortData);
+  const { isResettable } = useSelector((state: RootState) => state.sortData);
   const handleResetDataButtonClick = () => {
     dispatch(resetData());
   };
 
   return (
     <button
-      className={`${styles.button} ${!isVisualised ? styles.disabled : ""}`}
+      className={`${styles.button} ${!isResettable ? styles.disabled : ""}`}
       onClick={handleResetDataButtonClick}
-      disabled={!isVisualised}
+      disabled={!isResettable}
     >
       RESET
     </button>

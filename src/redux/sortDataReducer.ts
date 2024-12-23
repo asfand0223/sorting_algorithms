@@ -14,7 +14,8 @@ interface IInitialState {
   sortedData: number[][];
   currentStep: number;
   selectedSort: SELECTED_SORT;
-  isVisualised: boolean;
+  isSortable: boolean;
+  isResettable: boolean;
 }
 
 const initialState: IInitialState = {
@@ -24,7 +25,8 @@ const initialState: IInitialState = {
   sortedData: [],
   currentStep: 0,
   selectedSort: SELECTED_SORT.MERGE,
-  isVisualised: false,
+  isSortable: true,
+  isResettable: false,
 };
 
 interface ISetDataPayload {
@@ -43,8 +45,12 @@ interface ISetSelectedSort {
   selectedSort: SELECTED_SORT;
 }
 
-interface ISetIsVisualised {
-  isVisualised: boolean;
+interface ISetIsResettable {
+  isResettable: boolean;
+}
+
+interface ISetIsSortable {
+  isSortable: boolean;
 }
 
 const mergeSort = (
@@ -198,16 +204,23 @@ export const sortDataSlice = createSlice({
     },
     resetData: (state: IInitialState) => {
       state.sortingData = [...state.unsortedData];
-      state.isVisualised = false;
+      state.isSortable = true;
+      state.isResettable = false;
       state.isSorted = false;
       state.sortedData = [];
       state.currentStep = 0;
     },
-    setisVisualised: (
+    setIsSortable: (
       state: IInitialState,
-      action: PayloadAction<ISetIsVisualised>,
+      action: PayloadAction<ISetIsSortable>,
     ) => {
-      state.isVisualised = action.payload.isVisualised;
+      state.isSortable = action.payload.isSortable;
+    },
+    setisResettable: (
+      state: IInitialState,
+      action: PayloadAction<ISetIsResettable>,
+    ) => {
+      state.isResettable = action.payload.isResettable;
     },
   },
 });
@@ -221,6 +234,7 @@ export const {
   setCurrentStep,
   setSelectedSort,
   resetData,
-  setisVisualised,
+  setIsSortable,
+  setisResettable,
 } = sortDataSlice.actions;
 export const sortDataReducer = sortDataSlice.reducer;

@@ -3,7 +3,11 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import { setCurrentStep, setisVisualised } from "@/redux/sortDataReducer";
+import {
+  setCurrentStep,
+  setisResettable,
+  setIsSortable,
+} from "@/redux/sortDataReducer";
 
 const SortedData = () => {
   const { sortedData, currentStep } = useSelector(
@@ -12,11 +16,12 @@ const SortedData = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const iterateSteps = async () => {
+      dispatch(setIsSortable({ isSortable: false }));
       for (let i = 0; i < sortedData.length; i++) {
         dispatch(setCurrentStep({ currentStep: i }));
         await new Promise((resolve) => setTimeout(resolve, 50));
       }
-      dispatch(setisVisualised({ isVisualised: true }));
+      dispatch(setisResettable({ isResettable: true }));
     };
 
     iterateSteps();

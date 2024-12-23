@@ -4,7 +4,7 @@ import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   title: "Sorting Algorithms",
-  description: "Visualisation for various common algorithms",
+  description: "Visualisation for various common sorting algorithms",
 };
 
 export default function RootLayout({

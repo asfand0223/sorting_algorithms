@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import styles from "./styles.module.scss";
 
 const SortButton = () => {
+  const { isSortable } = useSelector((state: RootState) => state.sortData);
   const dispatch = useDispatch();
   const { selectedSort } = useSelector((state: RootState) => state.sortData);
   const handleSortButtonClick = () => {
@@ -29,7 +30,11 @@ const SortButton = () => {
     }
   };
   return (
-    <button className={styles.button} onClick={handleSortButtonClick}>
+    <button
+      className={`${styles.button} ${!isSortable ? styles.disabled : ""}`}
+      onClick={handleSortButtonClick}
+      disabled={!isSortable}
+    >
       SORT
     </button>
   );
